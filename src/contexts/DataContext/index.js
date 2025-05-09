@@ -34,15 +34,15 @@ export const DataProvider = ({ children }) => {
   });
   
   // Calcule du dernier événement
-  const last = Array.isArray(data) && data.length > 0 ? data[data.length - 1] : null;
+  const last = data?.events?.[data.events.length - 1]; // ajout
   
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         data,
-        last, // ajout : last
         error,
+        last, // ajout de last
       }}
     >
       {children}
