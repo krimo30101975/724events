@@ -23,7 +23,7 @@ const Slider = () => {
   });
   return (
     <div className="SlideCardList">
-      {byDateDesc?.map((event, idx) => (
+      {byDateDesc.map((event, idx) => (
         <div key={event.id || idx}>
           <div
             className={`SlideCard SlideCard--${
@@ -39,20 +39,22 @@ const Slider = () => {
               </div>
             </div>
           </div>
-          <div className="SlideCard__paginationContainer">
-            <div className="SlideCard__pagination">
-              {byDateDesc.map((_, radioIdx) => (
-                <input
-                  key={`${event.id}`}
-                  type="radio"
-                  name="radio-button"
-                  checked={index === radioIdx} // index au lieu de idx
-                />
-              ))}
-            </div>
-          </div>
         </div>
       ))}
+  
+      <div className="SlideCard__paginationContainer">
+        <div className="SlideCard__pagination">
+        {byDateDesc.map((event, radioIdx) => (
+  <input
+    key={`radio-${event.id}`} // identifiant unique ici
+    type="radio"
+    name="radio-button"
+    checked={index === radioIdx}
+    readOnly
+  />
+))}
+        </div>
+      </div>
     </div>
   );
 };
